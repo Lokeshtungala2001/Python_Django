@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Donor | Helping Hands</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8f8;
+            margin: 0;
+        }
+        header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        h3 {
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 15px;
+            margin: 0;
+        }
+        h3 a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        h3 a i {
+            margin-right: 6px;
+        }
+        h3 a:hover {
+            color: darkred;
+        }
+        form {
+            display: inline-block;
+            margin-top: 40px;
+            background-color: #fff;
+            padding: 25px 40px;
+            border: 2px solid #d32f2f;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(211, 47, 47, 0.3);
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        input[type="submit"]:hover {
+            background-color: darkred;
+        }
+        p {
+            font-weight: bold;
+            color: green;
+            text-align: center;
+        }
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .back-btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: red;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .back-btn i {
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1><i class="fa-solid fa-hand-holding-heart"></i> Helping Hands</h1>
+</header>
+
+<nav>
+    <h3>
+        <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> HOME</a> |
+        <a href="{% url 'display' %}"><i class="fa-solid fa-list"></i> DISPLAY</a> |
+        <a href="{% url 'search' %}"><i class="fa-solid fa-magnifying-glass"></i> SEARCH</a> |
+        <a href="{% url 'update' %}"><i class="fa-solid fa-pen-to-square"></i> UPDATE</a> |
+        <a href="{% url 'delete' %}"><i class="fa-solid fa-trash"></i> DELETE</a> |
+        <a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> LOGOUT</a>
+    </h3>
+</nav>
+
+<div style="text-align:center;">
+    <h2>Update Donor</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label>Enter Donor ID:</label>
+        <input type="number" name="donor_id" placeholder="Enter Donor ID" required>
+        <br>
+        <input type="submit" name="search" value="Search">
+
+        {% if donor %}
+            <hr>
+            <h3>Update Donor Details</h3>
+            <label>Name:</label>
+            <input type="text" name="name" value="{{ donor.name }}">
+
+            <label>Phone:</label>
+            <input type="text" name="phone" value="{{ donor.phono }}">
+
+            <label>Address:</label>
+            <input type="text" name="address" value="{{ donor.address }}">
+
+            <input type="hidden" name="donor_id" value="{{ donor.id }}">
+            <br>
+            <input type="submit" name="update" value="Update">
+        {% endif %}
+
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+    </form>
+
+    <br>
+    <a href="{% url 'welcome' %}" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+</div>
+
+<br><br><br><br>
+
+<footer>
+    ❤️ Made with Care by Helping Hands | Together, We Save Lives<br>
+    &copy; 2025 Helping Hands | Donate Blood, Save Lives ❤️
+</footer>
+
+</body>
+</html>

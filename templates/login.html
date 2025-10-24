@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Helping Hands - Login</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8f8;
+            margin: 0;
+        }
+
+        /* Header */
+        header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        /* Navigation Menu */
+        h3 {
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 15px;
+            margin: 0;
+        }
+
+        h3 a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        h3 a i {
+            margin-right: 6px;
+        }
+
+        h3 a:hover {
+            color: darkred;
+        }
+
+        /* Form Container */
+        .form-container {
+<!--            background-color: #ffeaea;-->
+            background-color:#ffffff;
+            width: 350px;
+            margin: 80px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 3px 3px 10px gray;
+            text-align: center;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><i class="fa-solid fa-hand-holding-heart"></i> Helping Hands</h1>
+    </header>
+
+    <!-- Navigation -->
+    <h3>
+        <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i>HOME</a> |
+        <a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i>LOGIN</a> |
+        <a href="{% url 'reg' %}"><i class="fa-solid fa-user-plus"></i>REGISTER</a> |
+        <a href="{% url 'about' %}"><i class="fa-solid fa-circle-info"></i>ABOUT US</a> |
+        <a href="{% url 'contact' %}"><i class="fa-solid fa-envelope"></i>CONTACT US</a>
+    </h3>
+
+    <!-- Login Form -->
+    <div class="form-container">
+        <h2>Login</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Enter Username" required><br>
+            <input type="password" name="password" placeholder="Enter Password" required><br>
+            <button type="submit">Login</button>
+        </form>
+
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>❤️ Made with Care by Helping Hands | Together, We Save Lives</p>
+        <p>&copy; 2025 Helping Hands | Donate Blood, Save Lives ❤️</p>
+    </footer>
+
+</body>
+</html>

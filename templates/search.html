@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Donor by Blood Group</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8f8;
+            margin: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 15px 0;
+        }
+         h3 {
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 15px;
+            margin: 0;
+        }
+        h3 a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        h3 a i {
+            margin-right: 6px;
+        }
+        h3 a:hover {
+            color: darkred;
+        }
+        form {
+            display: inline-block;
+            background-color: white;
+            border: 2px solid #d32f2f;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin: 8px;
+            width: 200px;
+        }
+        input[type="submit"] {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: darkred;
+        }
+        table {
+            margin: 30px auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        th, td {
+            border: 1px solid #d32f2f;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #d32f2f;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #ffeaea;
+        }
+        p {
+            font-weight: bold;
+            color: green;
+        }
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .back-btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: red;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1><i class="fa-solid fa-hand-holding-heart"></i> Helping Hands</h1>
+</header>
+
+<nav>
+    <h3>
+        <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> HOME</a> |
+        <a href="{% url 'display' %}"><i class="fa-solid fa-list"></i> DISPLAY</a> |
+        <a href="{% url 'search' %}"><i class="fa-solid fa-magnifying-glass"></i> SEARCH</a> |
+        <a href="{% url 'update' %}"><i class="fa-solid fa-pen-to-square"></i> UPDATE</a> |
+        <a href="{% url 'delete' %}"><i class="fa-solid fa-trash"></i> DELETE</a> |
+        <a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> LOGOUT</a>
+    </h3>
+</nav>
+
+<h2>🔍 Search Donor by Blood Group</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="blood_group" placeholder="Enter Blood Group (e.g., A+)" required>
+    <input type="submit" value="Search">
+</form>
+
+{% if donors %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Blood Group</th>
+        </tr>
+        {% for d in donors %}
+        <tr>
+            <td>{{ d.id }}</td>
+            <td>{{ d.name }}</td>
+            <td>{{ d.phono }}</td>
+            <td>{{ d.address }}</td>
+            <td>{{ d.email }}</td>
+            <td>{{ d.blood_group }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+{% if message %}
+    <p>{{ message }}</p>
+{% endif %}
+
+<div style="margin: 20px;">
+    <a href="{% url 'welcome' %}" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+</div>
+
+<footer>
+    ❤️ Made with Care by Helping Hands | Together, We Save Lives<br>
+    &copy; 2025 Helping Hands | Donate Blood, Save Lives ❤️
+</footer>
+
+</body>
+</html>

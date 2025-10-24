@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Donor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8f8;
+            text-align: center;
+            margin: 0;
+            padding-bottom: 100px;
+        }
+        header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+         h3 {
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 15px;
+            margin: 0;
+        }
+        h3 a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        h3 a i {
+            margin-right: 6px;
+        }
+        h3 a:hover {
+            color: darkred;
+        }
+        form {
+            display: inline-block;
+            background-color: white;
+            border: 2px solid #d32f2f;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        input[type="number"] {
+            padding: 8px;
+            margin: 8px;
+            width: 200px;
+        }
+        input[type="submit"] {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: darkred;
+        }
+        p {
+            font-weight: bold;
+            color: green;
+        }
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 60%;
+        }
+        th, td {
+            border: 1px solid #d32f2f;
+            padding: 10px;
+        }
+        th {
+            background-color: #d32f2f;
+            color: white;
+        }
+        .back-btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: red;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1><i class="fa-solid fa-hand-holding-heart"></i> Helping Hands</h1>
+</header>
+
+<nav>
+
+    <h3>
+        <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> HOME</a> |
+        <a href="{% url 'display' %}"><i class="fa-solid fa-list"></i> DISPLAY</a> |
+        <a href="{% url 'search' %}"><i class="fa-solid fa-magnifying-glass"></i> SEARCH</a> |
+        <a href="{% url 'update' %}"><i class="fa-solid fa-pen-to-square"></i> UPDATE</a> |
+        <a href="{% url 'delete' %}"><i class="fa-solid fa-trash"></i> DELETE</a> |
+        <a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> LOGOUT</a>
+    </h3>
+</nav>
+
+<h2>Delete Donor Record</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <label>Enter Donor ID:</label><br>
+    <input type="number" name="donor_id" placeholder="Enter Donor ID" required><br>
+    <input type="submit" name="search" value="Search">
+
+    {% if donor %}
+        <hr>
+        <h3>Donor Details</h3>
+        <table>
+            <tr><th>ID</th><th>Name</th><th>Phone</th><th>Address</th></tr>
+            <tr>
+                <td>{{ donor.id }}</td>
+                <td>{{ donor.name }}</td>
+                <td>{{ donor.phono }}</td>
+                <td>{{ donor.address }}</td>
+            </tr>
+        </table>
+        <input type="hidden" name="donor_id" value="{{ donor.id }}">
+        <input type="submit" name="delete" value="Delete">
+    {% endif %}
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</form>
+
+<div style="margin-top: 30px;">
+    <a href="{% url 'welcome' %}" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+</div>
+
+<footer>
+    ❤️ Made with Care by Helping Hands | Together, We Save Lives<br>
+    &copy; 2025 Helping Hands | Donate Blood, Save Lives ❤️
+</footer>
+
+</body>
+</html>

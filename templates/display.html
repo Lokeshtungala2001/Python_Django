@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Blood Info</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8f8;
+            margin: 0;
+        }
+        header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        h3 {
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 15px;
+            margin: 0;
+        }
+        h3 a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        h3 a i {
+            margin-right: 6px;
+        }
+        h3 a:hover {
+            color: darkred;
+        }
+        table {
+            width: 80%;
+            margin: 40px auto;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #d32f2f;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #d32f2f;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #ffeaea;
+        }
+                footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 30px;
+    position: fixed;
+    bottom: 0;
+    width:100%;
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <h1><i class="fa-solid fa-hand-holding-heart"></i> Helping Hands</h1>
+</header>
+
+<!-- Navigation Menu -->
+<nav>
+    <h3>
+        <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> HOME</a> |
+        <a href="{% url 'display' %}"><i class="fa-solid fa-list"></i> DISPLAY</a> |
+        <a href="{% url 'search' %}"><i class="fa-solid fa-magnifying-glass"></i> SEARCH</a> |
+        <a href="{% url 'update' %}"><i class="fa-solid fa-pen-to-square"></i> UPDATE</a> |
+        <a href="{% url 'delete' %}"><i class="fa-solid fa-trash"></i> DELETE</a> |
+        <a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> LOGOUT</a>
+    </h3>
+</nav>
+
+<!-- Table -->
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Blood Group</th>
+        <th>Phone</th>
+        <th>Email</th>
+    </tr>
+    {% for item in data %}
+    <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.address }}</td>
+        <td>{{ item.blood_group }}</td>
+        <td>{{ item.phono}}</td>
+        <td>{{ item.email }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div style="width: 80%; margin: 20px auto; text-align: center;">
+    <a href="{% url 'welcome' %}"
+       style="text-decoration: none; background-color: red; color: white;
+              padding: 8px 15px; border-radius: 5px; font-weight: bold;">
+        <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+</div>
+
+
+<footer>
+    ❤️ Made with Care by Helping Hands | Together, We Save Lives
+    <p>&copy; 2025 Helping Hands | Donate Blood, Save Lives ❤️</p>
+</footer>
+
+</body>
+</html>

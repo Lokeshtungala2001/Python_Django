@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register | Helping Hands</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        h3 {
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 15px;
+            margin: 0;
+        }
+
+        h3 a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        h3 a i {
+            margin-right: 6px; /* space between icon and text */
+        }
+
+        h3 a:hover {
+            color: darkred;
+        }
+
+        .container {
+            width: 400px;
+            background: #ffffff;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #b71c1c;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-top: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #b71c1c;
+        }
+
+<!--        footer {-->
+<!--            text-align: center;-->
+<!--            margin-top: 40px;-->
+<!--            padding: 10px;-->
+<!--            background-color: #d32f2f;-->
+<!--            color: white;-->
+<!--        }-->
+        footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 30px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fa-solid fa-hand-holding-heart"></i> Helping Hands</h1>
+    </header>
+    <h3>
+        <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i>HOME</a> |
+        <a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i>LOGIN</a> |
+        <a href="{% url 'reg' %}"><i class="fa-solid fa-user-plus"></i>REGISTER</a> |
+        <a href="{% url 'about' %}"><i class="fa-solid fa-circle-info"></i>ABOUT US</a> |
+        <a href="{% url 'contact' %}"><i class="fa-solid fa-envelope"></i>CONTACT US</a>
+    </h3>
+
+    <div class="container">
+        <h2>Register as a Blood Donor</h2>
+
+        <!-- Django form starts here -->
+        <form method="POST" action="{% url 'reg' %}">
+            {% csrf_token %}
+            <label for="name">Full Name</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+
+            <label for="phono">Phone Number</label>
+            <input type="text" name="phono" id="phono" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="blood_group">Blood Group</label>
+            <select name="blood_group" id="blood_group" required>
+                <option value="">--Select--</option>
+                <option>O+</option>
+                <option>O-</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+            </select>
+
+            <label for="address">Address</label>
+            <textarea name="address" id="address" rows="3" required></textarea>
+
+            <button type="submit"><i class="fa-solid fa-user-plus"></i> Register</button>
+        </form>
+    </div>
+
+    <footer>
+        ❤️ Made with Care by Helping Hands | Together, We Save Lives
+        <p>&copy; 2025 Helping Hands | Donate Blood, Save Lives ❤️</p>
+    </footer>
+</body>
+</html>

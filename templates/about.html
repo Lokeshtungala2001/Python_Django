@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us | Helping Hands</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #fff8f8;
+        }
+
+        header {
+            background-color: #d32f2f;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        h3 {
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 15px;
+            margin: 0;
+        }
+
+        h3 a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        h3 a i {
+            margin-right: 6px; /* space between icon and text */
+        }
+
+        h3 a:hover {
+            color: darkred;
+        }
+
+        .container {
+            max-width: 800px;
+            background: white;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #b71c1c;
+            text-align: center;
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.6;
+            color: #333;
+        }
+
+<!--       footer {-->
+<!--            background-color: #d32f2f;-->
+<!--            color: white;-->
+<!--            text-align: center;-->
+<!--            padding: 10px;-->
+<!--            margin-top: 30px;-->
+<!--        }-->
+        footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 30px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fa-solid fa-hand-holding-heart"></i> Helping Hands</h1>
+    </header>
+
+    <h3>
+        <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> HOME</a> |
+        <a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i> LOGIN</a> |
+        <a href="{% url 'reg' %}"><i class="fa-solid fa-user-plus"></i> REGISTER</a> |
+        <a href="{% url 'about' %}"><i class="fa-solid fa-circle-info"></i> ABOUT US</a> |
+        <a href="{% url 'contact' %}"><i class="fa-solid fa-envelope"></i> CONTACT US</a>
+    </h3>
+
+    <div class="container">
+        <h2>About Helping Hands</h2>
+        <p>
+            <b>Helping Hands</b> is a community-driven blood donation platform that connects donors and recipients
+            quickly and safely. Our goal is to make blood donation easy, accessible, and impactful — saving lives
+            through the power of compassion and technology.
+        </p>
+        <p>
+            We believe every drop of blood counts. Our mission is to encourage voluntary donors, provide emergency
+            support to those in need, and create awareness about the importance of blood donation.
+        </p>
+        <p>
+            Whether you are a donor or someone seeking help, Helping Hands is here to connect hearts and bring hope.
+        </p>
+    </div>
+
+     <footer>
+         ❤️ Made with Care by Helping Hands | Together, We Save Lives<br><br>
+            &copy; 2025 Helping Hands | Donate Blood, Save Lives ❤️
+    </footer>
+</body>
+</html>

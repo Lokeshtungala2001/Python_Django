@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>WelcomePage</title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Welcome Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         /* Basic Page Styling */
@@ -38,78 +38,89 @@
         }
 
         h3 a i {
-            margin-right: 6px; /* space between icon and text */
+            margin-right: 6px;
         }
 
         h3 a:hover {
             color: darkred;
         }
 
-        /* Quote Section */
-        .quote {
+        /* Full-width Banner Image */
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu5JdS-6Aysozfg8BSPpy8Pe6RKEcqQimIfA&s");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
             text-align: center;
-            margin: 60px auto;
-            font-size: 22px;
-            color: #333;
-            width: 70%;
-            line-height: 1.6;
+            overflow: hidden;
+        }
+
+        /* Dark overlay for readability */
+        .banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        /* Quote on Banner */
+        .banner .quote {
+            position: relative;
+            z-index: 2;
+            font-size: 26px;
+            width: 80%;
+            line-height: 1.5;
             font-style: italic;
         }
 
         /* Footer */
-<!--        footer {-->
-<!--            background-color: #e63946;-->
-<!--            color: white;-->
-<!--            text-align: center;-->
-<!--            padding: 15px 0;-->
-<!--            position: fixed;-->
-<!--            bottom: 0;-->
-<!--            width: 100%;-->
-<!--        }-->
         footer {
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    margin-top: 30px;
-    position: fixed;
-    bottom: 0;
-    width:100%;
-}
- img {
-    display: block;          /* centers the image */
-    margin: 20px auto;       /* adds space above and below */
-    max-width: 200px;        /* keeps it from being too big */
-    height: auto;            /* keeps correct proportions */
-<!--    border-radius: 10px;     /* soft rounded corners */-->
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* slight shadow */
-}
-
-</style>
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
+
 <body>
-<header>
-    <h1><i class="fa-solid fa-hand-holding-heart"></i> Helping Hands</h1>
-</header>
-<!-- Navigation Menu -->
-<nav>
-    <h3>
-        <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> HOME</a> |
-        <a href="{% url 'display' %}"><i class="fa-solid fa-list"></i> DISPLAY</a> |
-        <a href="{% url 'search' %}"><i class="fa-solid fa-magnifying-glass"></i> SEARCH</a> |
-        <a href="{% url 'update' %}"><i class="fa-solid fa-pen-to-square"></i> UPDATE</a> |
-        <a href="{% url 'delete' %}"><i class="fa-solid fa-trash"></i> DELETE</a> |
-        <a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> LOGOUT</a>
-    </h3>
-</nav>
- <div class="quote">
-        “A single pint can save three lives, a single gesture can create a million smiles.
-        <br>Be the reason someone lives — Donate Blood, Save Lives.”
+    <!-- Header -->
+    <header>
+        <h1><i class="fa-solid fa-hand-holding-heart"></i> Helping Hands</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <h3>
+            <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> HOME</a> |
+            <a href="{% url 'display' %}"><i class="fa-solid fa-list"></i> DISPLAY</a> |
+            <a href="{% url 'search' %}"><i class="fa-solid fa-magnifying-glass"></i> SEARCH</a> |
+            <a href="{% url 'update' %}"><i class="fa-solid fa-pen-to-square"></i> UPDATE</a> |
+            <a href="{% url 'delete' %}"><i class="fa-solid fa-trash"></i> DELETE</a> |
+            <a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> LOGOUT</a>
+        </h3>
+    </nav>
+
+    <!-- Full-width Image Banner -->
+    <div class="banner">
+        <div class="quote">
+           <q>A drop of blood means a world to someone</q>
+        </div>
     </div>
-    <div class="img">
-        <img src="{% static 'images/helping.png' %}" alt="Helping Hands Image">
-    </div>
-    <br><br>
 
     <!-- Footer -->
     <footer>

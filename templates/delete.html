@@ -121,7 +121,7 @@
     </h3>
 </nav>
 
-<h2>Delete Donor Record</h2>
+<!-- <h2>Delete Donor Record</h2>
 
 <form method="POST">
     {% csrf_token %}
@@ -142,6 +142,39 @@
             </tr>
         </table>
         <input type="hidden" name="donor_id" value="{{ donor.id }}">
+        <input type="submit" name="delete" value="Delete">
+    {% endif %}
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</form> -->
+<h2>Delete Donor Record</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Enter Master Key:</label><br>
+    <input type="password" name="master_key" placeholder="Enter Master Key" required><br><br>
+
+    <label>Enter Donor ID:</label><br>
+    <input type="number" name="donor_id" placeholder="Enter Donor ID" required><br>
+    <input type="submit" name="search" value="Search">
+
+    {% if donor %}
+        <hr>
+        <h3>Donor Details</h3>
+        <table>
+            <tr><th>ID</th><th>Name</th><th>Phone</th><th>Address</th></tr>
+            <tr>
+                <td>{{ donor.id }}</td>
+                <td>{{ donor.name }}</td>
+                <td>{{ donor.phono }}</td>
+                <td>{{ donor.address }}</td>
+            </tr>
+        </table>
+        <input type="hidden" name="donor_id" value="{{ donor.id }}">
+        <input type="hidden" name="master_key" value="{{ request.POST.master_key }}">
         <input type="submit" name="delete" value="Delete">
     {% endif %}
 

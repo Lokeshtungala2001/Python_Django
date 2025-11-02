@@ -152,6 +152,9 @@
 
             <button type="submit"><i class="fa-solid fa-user-plus"></i> Register</button>
         </form>
+        {% if msg %}
+                   <p style="text-align:center; color:green; font-weight:bold;">{{ msg }}</p>
+        {% endif %}
     </div>
 
     <footer>
